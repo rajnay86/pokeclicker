@@ -11,7 +11,7 @@ class Battle {
     static catching: KnockoutObservable<boolean> = ko.observable(false);
     static catchRateActual: KnockoutObservable<number> = ko.observable(null);
     static pokeball: KnockoutObservable<GameConstants.Pokeball> = ko.observable(GameConstants.Pokeball.Pokeball);
-    static lastPokemonAttack = Date.now();
+
     static lastClickAttack = Date.now();
 
     /**
@@ -28,11 +28,7 @@ class Battle {
     public static pokemonAttack() {
         // TODO: figure out a better way of handling this
         // Limit pokemon attack speed, Only allow 1 attack per 900ms
-        const now = Date.now();
-        if (this.lastPokemonAttack > now - 900) {
-            return;
-        }
-        this.lastPokemonAttack = now;
+
         if (!this.enemyPokemon()?.isAlive()) {
             return;
         }
